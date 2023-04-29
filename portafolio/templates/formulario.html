@@ -1,0 +1,8 @@
+<section id="contacto">
+    <h2>Contáctame</h2>
+    <form action="{% url 'formulario' %}" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Enviar">
+    </form>
+  </section>
