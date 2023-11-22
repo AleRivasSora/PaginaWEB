@@ -14,6 +14,7 @@
   <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script>
   <!-- Agregamos nuestro archivo CSS personalizado -->
   <link rel="stylesheet" href="{% static 'css/style3.css' %}">
+  <script src="https://kit.fontawesome.com/75ee482120.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <header>
@@ -29,38 +30,55 @@
   <main>
     <section id="inicio">
       <h1>Bienvenido a mi Portafolio</h1>
-      <p>Soy un desarrollador especializado en Backend con experiencia en Python Django MongoDB SQL, y con habilidades en JavaScript y CSS.</p>
-      <a href="#contacto">Contáctame</a>
+      <p>Soy un desarrollador Backend con experiencia en Python, Django, SQL, HTML, CSS.</p>
+      <a href="#contacto">Contáctame</a><br>
+      <div class="icon-skill"><img src="https://img.icons8.com/color/48/git.png" alt="git"/>
+        <img width="48" height="48" src="https://img.icons8.com/fluency/48/css3.png" alt="css3"/>
+        <img width="48" height="48" src="https://img.icons8.com/fluency/48/html-5.png" alt="html-5"/>
+        <img width="48" height="48" src="https://img.icons8.com/fluency/48/python.png" alt="python"/>
+        <img width="48" height="48" src="https://img.icons8.com/fluency/48/visual-studio-code-2019.png" alt="visual-studio-code-2019"/>
+        <img src="static/images_html/icons8-numpy-48.png" alt="">
+        <img width="75px " height="65px" src="static/images_html/pandas.svg" alt="">
+        <img src="static/images_html/icons8-mysql-logo-48.png" alt="">
+        
+        
+      </div>
     </section>
     <section id="sobre-mi">
       <h2>Sobre mí</h2>
-      <img src="img/foto-perfil.jpg" alt="Foto de perfil">
-      <p>Mi nombre es Héctor Escobar y soy un apasionado desarrollador backend con experiencia en programación y tecnología. Desde que inicié mis estudios en programación, he trabajado en diversos proyectos que me han permitido desarrollar habilidades sólidas en el desarrollo de aplicaciones con Python, Django y SQL. A través de mi experiencia, he aprendido la importancia de crear aplicaciones eficientes y escalables que puedan ofrecer una experiencia excepcional al usuario. Estoy constantemente buscando nuevas formas de mejorar mis habilidades y de mantenerme actualizado en las últimas tendencias tecnológicas, para poder así seguir creciendo como profesional en este emocionante campo.</p>
+      <img src="static/images_html/laptop.jpg" alt="Foto de perfil">
+      
+      <h1>Soy un Desarrollador Python Junior apasionado y comprometido con el
+        aprendizaje constante y la resolución efectiva de problemas. Busco contribuir al 
+        desarrollo de soluciones de alta calidad mientras sigo evolucionando en este emocionante campo.</h1>
+      
     </section>
     <section id="proyectos">
-        <h2>Proyectos</h2>
+        <h2>Proyectos personales</h2>
         <ul>
           {% for proyecto in proyectos %}
           <li>
-            <h3><center>{{ proyecto.titulo }}</center></h3>
-            <center><img src= "{{ proyecto.imagen.url }}" alt="{{ proyecto.titulo }}" width="250" height="250"></center>
-            <p><center>{{ proyecto.descripcion }}</center></p>
-            <a href="{{proyecto.url}}" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-github"></i> Ver en GitHub
-              </a>
+            <h3>{{ proyecto.titulo }}</h3>
+            <img src= "{{ proyecto.imagen.url }}" alt="{{ proyecto.titulo }}" width="250" height="250"></center>
+            <p>{{ proyecto.descripcion }}</p>
+            
+              <div class="proyectos-icons"><a href="{{proyecto.url}}" target="_blank" rel="noopener noreferrer"><img src="static/images_html/github (2).svg" alt="" style="background-color: white;"></a>
+                </a>
+                <a href="{% url 'detalle_proyecto' proyecto.id %}" ><i  class="fa-solid fa-link" style="font-size: 20"> blog</i></a>
+              </div>
+              
+              
           </li>
           {% endfor %}
         </ul>
       </section>
-      {% if enviado %}
-    <p>Tu mensaje ha sido enviado. ¡Gracias!</p>
-        {% endif %}
+      
       <section id="contacto">
         <h2>Contáctame</h2>
         <form action="" method="POST">
             {% csrf_token %}
             {{ form }}
           
-          <input type="submit" value="Enviar">
+          <input  type="submit" value="Enviar">
         </form>
       </section>

@@ -1,9 +1,11 @@
 from django.db import models
-from django.db.models.fields import CharField
+from django.db.models.fields import CharField , TextField 
 from django.db.models.fields.files import ImageField
 from django.db.models.fields import URLField
 from django import forms
 from django.utils import timezone
+from django.urls import reverse
+
 
 
 class Projecto(models.Model):
@@ -11,11 +13,11 @@ class Projecto(models.Model):
     descripcion = CharField(max_length=200)
     imagen = ImageField(upload_to='portafolio/images')
     url = URLField(blank=True)
-
+    explicacion = TextField(default="")
 
     def __str__(self):
         return self.titulo
-
+    
 
 class Contacto(models.Model):
     nombre = models.CharField(max_length=50)

@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<meta charset="UTF-8">
+
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'css/style3.css' %}">
+    <script src="https://kit.fontawesome.com/75ee482120.js" crossorigin="anonymous"></script>
+    <title>Detalle del Proyecto</title>
+</head>
+<body><div class="blog" style="background-color: gold;">
+    <header>
+        <nav>
+          <ul>
+            <li><a href="{% url 'ejemplo' %}"><i class="fas fa-home"></i>Inicio</a></li>
+
+          </ul>
+        </nav>
+      </header>
+    <div class="blog-container">
+        <div class="blog-header">
+            <h1>{{ proyecto.titulo }}</h1>
+            <p class="description">{{ proyecto.descripcion }}</p>
+            <center><img src="{{ proyecto.imagen.url }}" alt="{{ proyecto.titulo }}"></center>
+        </div>
+        <div class="blog-content">
+            <center><pre class="formatted-text">{{ proyecto.explicacion|safe }}</pre></center>
+            {% if proyecto.url %}
+                <center><a href="{{ proyecto.url }}" target="_blank" class="github-link">
+                    <i class="fab fa-github"></i> Ver en GitHub
+                </a></center>
+            {% endif %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

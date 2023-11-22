@@ -4,7 +4,8 @@ from django.http import HttpResponse
 from .forms import ContactoForm
 from django.contrib import messages
 from django.utils import timezone
-
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 def proyectos(request):
     proyectos = Projecto.objects.all()
@@ -25,3 +26,6 @@ def proyectos(request):
 def index(request):
     return render(request,'index.html')
 
+def detalle_proyecto(request, proyecto_id):
+    proyecto = get_object_or_404(Projecto, id=proyecto_id)
+    return render(request, 'detalle_proyecto.html', {'proyecto': proyecto})

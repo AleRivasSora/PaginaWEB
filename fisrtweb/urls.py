@@ -22,10 +22,13 @@ from portafolio import views
 
 
 
+
 urlpatterns = [    
     path('admin/', admin.site.urls),
     path('index/', views.index, name='index'),
     path('', views.proyectos, name='ejemplo'),
+    path('',include('portafolio.urls'))
+    
 
 ]
 
